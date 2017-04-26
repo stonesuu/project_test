@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block sidebar %}
+<li><a href="#">人员管理</a><li>
+<li  class="active"><a href="#">项目进度</a></li>
+<li><a href="#">人员统计</a></li>
+{% endblock %}
+
+{% block content %}
+<table class="table" grouper="">
+</table>
+{% endblock %}
+
+{% block js %}
+<script>
+$.get('/')
+</script>
+{% endblock %}

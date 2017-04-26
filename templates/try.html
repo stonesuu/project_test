@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="utf-8">
+    <title>hr_test</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/prettify.css" rel="stylesheet">
+</head>
+<body>
+<div class="gantt"></div>
+<script src="/static/js/jquery-1.7.2.min.js"></script>
+<script src="/static/js/jquery.fn.gantt.js" charset ="GB2312"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-popover.js"></script>
+<script src="/static/js/bootstrap-tooltip.js"></script>
+<script src="/static/js/prettify.js"></script>
+<script>
+function getgantt(){
+	$.getJSON('/getgantt',function(res){
+		console.log(res)
+		$(".gantt").gantt({
+				source:	res,
+				navigate: "scroll",
+				scale: "days",
+				maxScale: "weeks",
+				minScale: "days",
+				itemsPerPage: 10,
+				onItemClick: function(data) {
+					alert("Item clicked - show some details");
+				},
+				onAddClick: function(dt, rowId) {
+					alert("Empty space clicked - add an item!");
+				},
+				onRender: function() {
+					if (window.console && typeof console.log === "function") {
+						console.log("chart rendered");
+					}
+				}
+			});
+
+	})
+}
+getgantt()
+
+</script>
+</body>
+</html>
